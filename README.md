@@ -15,3 +15,8 @@ sh ./build.sh
 sh ./start.sh
 ```
 
+## 4.在项目根目录下执行
+```SHELL
+sh ./curl.sh
+```
+

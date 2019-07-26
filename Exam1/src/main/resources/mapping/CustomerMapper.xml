@@ -24,8 +24,8 @@
         select
         <include refid="comment_result"/>
         from customer
-        limit ${pageSize}*${page}-1,${pageSize}
         order by customer_id ${sort}
+        limit ${No},${pageSize}
     </select>
 
     <select id="findCustomerByFirstName" resultType="Customer">

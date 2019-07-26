@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+
+curl -X GET  "me:18080/v1/customers/BySelfPage?page=2&pageSize=10&sort=ASC"
+echo
 curl -X GET  "me:18080/v1/customers/login?name=AARON&password=SELBY"
 echo
 curl -X GET  "me:18080/v1/customers/?page=2&pageSize=10"
