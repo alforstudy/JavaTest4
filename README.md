@@ -1,11 +1,11 @@
 # 运行方式说明
 ## 1.git clone 项目地址
 ```SHELL
-    git clone https://github.com/wmzzh117/JavaTest3.git
+    git clone https://github.com/alforstudy/JavaTest4.git
 ```
 ## 2.切换到项目根路径下
 ```SHELL
-cd JavaTest3
+cd JavaTest4
 ```
 ## 3.在项目根目录，执行以下代码：
 ```SHELL
