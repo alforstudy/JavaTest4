@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hand.al.ssm.exam1.mapper.CustomerMapper">
+    <sql id="comment_result">
+        customer_id as customerId,
+         first_name as firstName,
+         last_name as lastName,
+         store_id as storeId,
+         email as email,
+         address_id as addressId,
+         active as active,
+         create_date as createDate,
+         last_update  as lastUpdate
+    </sql>
+
+
+    <select id="findAll" resultType="Customer">
+        select
+        <include refid="comment_result"/>
+        from customer
+    </select>
+
+    <select id="findAll2" resultType="Customer">
+        select
+        <include refid="comment_result"/>
+        from customer
+        limit ${pageSize}*${page}-1,${pageSize}
+        order by customer_id ${sort}
+    </select>
+
+    <select id="findCustomerByFirstName" resultType="Customer">
+        select
+        <include refid="comment_result"/>
+        from customer where first_name = #{firstName};
+    </select>
+
+    <select id="findAddressIdByAddress" resultType="Long">
+        select address_id from address where address = #{address};
+    </select>
+
+    <insert id="saveCustomer">
+        <selectKey keyProperty="customerId" resultType="long" order="AFTER">
+            select LAST_INSERT_ID() as customerId
+        </selectKey>
+        insert into customer(first_name,last_name, email, address_id,store_id,active,create_date,last_update)
+        values(#{firstName},#{lastName},#{email},#{addressId},#{storeId},#{active},#{createDate},#{lastUpdate});
+    </insert>
+
+    <update id="updateCustomer">
+        update  customer
+        set
+           first_name = #{firstName},
+           last_name = #{lastName},
+           email = #{email}
+        where customer_id = #{customerId}
+    </update>
+
+    <delete id="deleteCustomerById">
+        delete from customer
+        where customer_id = #{customerId}
+    </delete>
+</mapper>
+

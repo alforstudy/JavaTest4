@@ -1,0 +1,26 @@
+spring:
+    datasource:
+        url: jdbc:mysql://${db_ip:127.0.0.1}:${db_port:3306}/${db_name:sakila}?serverTimezone=GMT%2B8&characterEncoding=utf-8
+        username: ${db_user:root}
+        password: ${db_pd:admin123}
+        driver-class-name: ${driver:com.mysql.jdbc.Driver}
+#    context:
+#        listener:
+#            classes: com.hand.al.exam1.listener.MyListener
+    jackson:
+        time-zone: GMT+8
+        date-format: yyyy-MM-dd
+        serialization:
+            FAIL_ON_EMPTY_BEANS: false
+logging:
+    level:
+        com.hand.al.exam1.mapper: debug
+mybatis:
+    mapper-locations: classpath:/mapping/*.xml
+    config-location: classpath:mybatis-config.xml
+#    type-aliases-package: classpath:com.hand.al.springbootdemo1.vo
+mapper:
+    identity: MYSQL
+    mappers: com.hand.al.ssm.exam1.baseMapper.BaseMapper
+server:
+    port: ${app_port:18080}
